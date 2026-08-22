@@ -6,7 +6,7 @@
 	
 	<script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
 	<!-- Start of headStart -->
-  <script>document.addEventListener("DOMContentLoaded",function(){document.title="EURUS | Access Precedes Success";var update=function(){var title=document.querySelector("h1.framer-styles-preset-qx5v1y");if(title&&title.textContent!=="EURUS")title.textContent="EURUS";var subtitle=document.querySelector("h3.framer-styles-preset-bgnhww");if(subtitle&&subtitle.textContent!=="Find your next internships")subtitle.textContent="Find your next internships";var logo=document.querySelector('[data-framer-name="Logo Wrapper"] [data-framer-name="Logo"]');if(logo){logo.setAttribute("aria-label","EURUS | Access Precedes Success");logo.setAttribute("title","EURUS | Access Precedes Success");if(logo.querySelector("svg"))logo.innerHTML='<img src="./e_logo.PNG" alt="EURUS" style="width:100%;height:100%;object-fit:contain;display:block">'}};update();new MutationObserver(update).observe(document.body,{childList:true,subtree:true,characterData:true})})</script>
+  <script>document.addEventListener("DOMContentLoaded",function(){document.title="EURUS | Access Precedes Success";var update=function(){var title=document.querySelector("h1.framer-styles-preset-qx5v1y");if(title&&title.textContent!=="EURUS")title.textContent="EURUS";var subtitle=document.querySelector("h3.framer-styles-preset-bgnhww");if(subtitle&&subtitle.textContent!=="Find your next internship")subtitle.textContent="Find your next internship";var logo=document.querySelector('[data-framer-name="Logo Wrapper"] [data-framer-name="Logo"]');if(logo){logo.setAttribute("aria-label","EURUS | Access Precedes Success");logo.setAttribute("title","EURUS | Access Precedes Success");if(logo.querySelector("svg"))logo.innerHTML='<img src="./e_logo.PNG" alt="EURUS" style="width:100%;height:100%;object-fit:contain;display:block">'}};update();new MutationObserver(update).observe(document.body,{childList:true,subtree:true,characterData:true})})</script>
     
     <!-- End of headStart -->
 	<meta name="viewport" content="width=device-width">
@@ -15,9 +15,8 @@
     <meta name="description" content="Elevate your digital presence with CREOVO, a bold and dynamic portfolio template built for Framer. Designed for creative professionals and studios, it features modern aesthetics and seamless layouts to showcase your projects with maximum impact.">
     <meta name="framer-search-index" content="https://framerusercontent.com/sites/1U0wzajwRyYbfwO1SLjyRi/searchIndex-tGl7gM4eIyh0.json">
     <meta name="framer-search-index-fallback" content="https://framerusercontent.com/sites/1U0wzajwRyYbfwO1SLjyRi/searchIndex-RjdwSQDmpslj.json">
-    <link href="https://framerusercontent.com/images/WkPOBHHtG4R0IzdOLCBjwCqXjo4.png" rel="icon" media="(prefers-color-scheme: light)">
-    <link href="https://framerusercontent.com/images/WkPOBHHtG4R0IzdOLCBjwCqXjo4.png" rel="icon" media="(prefers-color-scheme: dark)">
-    <link rel="apple-touch-icon" href="https://framerusercontent.com/images/Yx0nqlBW980LP0cqY5LwQDBmWlY.png">
+    <link rel="icon" type="image/png" href="./e_logo.PNG">
+    <link rel="apple-touch-icon" href="./e_logo.PNG">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="CREOVO — Creative Portfolio Template">
@@ -2188,6 +2187,227 @@ gw-radio label.gw-radio__input-label u {
       const collabLabel = collabLink.querySelector('p');
       if (collabLabel) collabLabel.textContent = 'APPLY NOW';
     });
+    document.querySelectorAll('p').forEach((label) => {
+      if (label.textContent.includes('Creative Studio')) {
+        label.textContent = label.textContent.replace('Creative Studio', 'Choose When & How You Intern');
+      }
+    });
+    document.querySelectorAll('h2').forEach((heading) => {
+      if (heading.textContent.trim() === 'Creative') heading.textContent = 'Choose When &';
+      if (heading.textContent.trim() === 'Studio') heading.textContent = 'How You Intern';
+    });
+    document.querySelectorAll('#hero-section p').forEach((label) => {
+      if (label.textContent.trim() === 'Selected Projects') label.textContent = 'Apply Anytime';
+      if (label.textContent.trim() === '2024') label.textContent = '2026';
+    });
+    const aboutSection = document.querySelector('[data-framer-name="About Section"]');
+    if (aboutSection) {
+      const aboutTag = aboutSection.querySelector('h5');
+      const aboutTitle = aboutSection.querySelector('[data-framer-name="Title Text"]');
+      if (aboutTag) aboutTag.parentElement.remove();
+      if (aboutTitle && !aboutTitle.querySelector('[data-eurus-internship-description]')) {
+        const description = document.createElement('p');
+        description.dataset.eurusInternshipDescription = 'true';
+        description.textContent = 'Complete your internship during the school year or summer. In a remote, hybrid, or in-person setting.';
+        description.style.cssText = 'margin-top:24px;max-width:560px;font-family:"Inter Tight","Inter Tight Placeholder",sans-serif;font-size:18px;line-height:1.5;color:#6e6e6c;';
+        aboutTitle.append(description);
+      }
+    }
+    document.querySelectorAll('a').forEach((link) => {
+      const label = link.textContent.trim().toLowerCase();
+      if (label === 'projects') {
+        link.textContent = 'Partners';
+        link.href = './404.html';
+      }
+      if (label === 'services' || label === 'testimonials' || label === 'faq') {
+        link.href = './404.html';
+      }
+    });
+    const local404Link = document.querySelector('footer [data-framer-name="404 ERROR"] a');
+    if (local404Link) local404Link.href = './404.html';
+
+    const footer = document.querySelector('footer');
+    if (footer) {
+      footer.style.marginTop = '64px';
+      const footerLogo = footer.querySelector('img[src*="1tQX6kGfuHrFFnRsory4jcxibM.png"]');
+      if (footerLogo) {
+        footerLogo.removeAttribute('srcset');
+        footerLogo.src = './Eurus%20Breakfast%20Logo%20(2)%20(1).png';
+      }
+      const footerTexts = [
+        ['#1 Creative design agency', 'MORE THAN A RESUME'],
+        ['New York, usa', 'ACCESS PRECEDES SUCCESS'],
+        ['Partnering with brands', 'NEW YORK,USA'],
+        ['Stay updated with thoughtful perspectives on branding, UI/UX, and creative strategy. No spam, just carefully curated ideas and studio updates.', 'No experience is required. Whether you\'re stepping into your first professional setting or building on experience you already have. We provide preparation and guidance during your internship experience.'],
+        ['© 2025 creova. All Rights Reserved.', 'EURUS 2026. ALL RIGHTS RESERVED']
+      ];
+      footer.querySelectorAll('p').forEach((text) => {
+        const replacement = footerTexts.find(([original]) => text.textContent.trim() === original);
+        if (replacement) text.textContent = replacement[1];
+      });
+      const footerCredit = [...footer.querySelectorAll('p')].find((text) => text.textContent.trim().startsWith('Made with love by'));
+      if (footerCredit) footerCredit.remove();
+      const newsletterHeading = [...footer.querySelectorAll('h5')].find((heading) => heading.textContent.trim() === 'Subscribe To Our Newsletter');
+      if (newsletterHeading) newsletterHeading.textContent = 'Be the First to Know';
+      footer.querySelectorAll('a').forEach((link) => {
+        const label = link.textContent.trim().toLowerCase();
+        if (label === 'instagram') {
+          link.href = 'https://www.instagram.com/eurus.world/';
+        } else if (['partners', 'services', 'testimonials', 'faq', 'privacy policy', 'terms of service', 'twitter', 'dribbble', 'linkedin'].includes(label)) {
+          link.href = './404.html';
+        }
+      });
+      const questionsButton = [...footer.querySelectorAll('button')].find((button) => button.textContent.trim().toLowerCase() === 'subscribe');
+      if (questionsButton) {
+        questionsButton.querySelector('p').textContent = 'Questions?';
+        questionsButton.type = 'button';
+        questionsButton.addEventListener('click', () => { window.location.href = 'mailto:info@eurus.world'; });
+      }
+    }
+
+    // Temporary endpoint: remove this block to restore the sections below the hero.
+    const temporaryEnd = document.querySelector('#hero-section');
+    const applyAnytime = temporaryEnd && [...temporaryEnd.querySelectorAll('p')].find((label) => label.textContent.trim() === 'Apply Anytime');
+    if (temporaryEnd && applyAnytime) {
+      const year = [...temporaryEnd.querySelectorAll('p')].find((label) => label.textContent.trim() === '2026');
+      if (year) year.parentElement.style.setProperty('display', 'none', 'important');
+      let nextSection = temporaryEnd.nextElementSibling;
+      while (nextSection) {
+        nextSection.style.setProperty('display', 'none', 'important');
+        nextSection = nextSection.nextElementSibling;
+      }
+      const buyPromo = document.querySelector('[name="Remove This Buy Promo"]');
+      if (buyPromo) buyPromo.style.setProperty('display', 'none', 'important');
+    }
+
+    const mobileFooterStyles = document.createElement('style');
+    mobileFooterStyles.textContent = `
+      @media (max-width: 809.98px) {
+        footer { width: 100% !important; padding: 32px 20px 24px !important; gap: 48px !important; }
+        footer [data-framer-name="Content"] { width: 100% !important; display: flex !important; flex-direction: column !important; align-items: stretch !important; gap: 40px !important; }
+        footer [data-framer-name="Footer Header"] { width: 100% !important; flex-direction: column !important; align-items: center !important; gap: 8px !important; text-align: center !important; }
+        footer [data-framer-name="Text Content"] { width: 100% !important; display: flex !important; flex-direction: column !important; gap: 28px !important; }
+        footer [data-framer-name="LEFT Content"], footer [data-framer-name="Subtitle"] { width: 100% !important; }
+        footer form { width: 100% !important; }
+        footer .framer-1pifook { width: 100% !important; height: 52px !important; padding: 12px 104px 12px 16px !important; }
+        footer .framer-170le08-container { right: 6px !important; left: auto !important; width: auto !important; }
+        footer .framer-Aoc7w { padding: 8px 16px !important; }
+        footer [data-framer-name="Menu"] { width: 100% !important; display: flex !important; flex-direction: column !important; align-items: flex-start !important; gap: 28px !important; }
+        footer [data-framer-name="Pages"], footer [data-framer-name="Legal Page"], footer [data-framer-name="Social Link"] { width: 100% !important; align-items: flex-start !important; }
+        footer [data-framer-name="Social Link"] { margin-top: 24px !important; }
+        footer [data-framer-name="Logo"] { width: 100% !important; max-width: 100% !important; }
+        footer [data-framer-name="Footer Credit"] { width: 100% !important; justify-content: center !important; text-align: center !important; }
+      }
+    `;
+    document.head.appendChild(mobileFooterStyles);
+
+    const mobileNavStyles = document.createElement('style');
+    mobileNavStyles.textContent = `
+      nav [data-eurus-mobile-apply] { display: none; }
+      @media (max-width: 809.98px) {
+        nav { background-color: transparent !important; position: relative !important; z-index: 20 !important; }
+        nav [data-framer-name="Content"] { width: 100% !important; padding: 10px 0 !important; }
+        nav [data-framer-name="Logo and Menu"] { flex: 0 0 auto !important; }
+        nav [data-framer-name="Logo"] { width: 64px !important; height: 42px !important; }
+        nav [data-framer-name="Logo Wrapper"] { width: 64px !important; height: 42px !important; }
+        nav .framer-1q6wu9x-container { display: none !important; }
+        nav [data-eurus-mobile-apply] { display: block !important; }
+        nav [data-framer-name="Menu Items"] { display: none !important; position: absolute !important; top: 62px !important; right: 20px !important; width: 190px !important; padding: 14px 18px !important; background: #fdcb26 !important; box-shadow: 0 8px 18px rgba(18,18,18,.16) !important; flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; }
+        nav [data-framer-name="Menu Items"].eurus-mobile-open { display: flex !important; }
+        nav [data-framer-name="Menu Items"] > div { width: 100% !important; }
+        nav [data-framer-name="Menu Items"] a { display: block !important; padding: 4px 0 !important; }
+        nav [data-framer-name="Menu Items"] [data-eurus-mobile-apply] { display: block !important; width: auto !important; border: 0 !important; border-radius: 0 !important; padding: 4px 0 !important; background: transparent !important; color: #121212 !important; font: 400 16px/27.2px "Inter Tight", sans-serif !important; text-align: left !important; text-transform: uppercase !important; text-decoration: none !important; box-shadow: none !important; }
+        nav [data-framer-name="Menu Items"] [data-eurus-mobile-apply]::after { display: none !important; content: none !important; }
+        nav [data-eurus-mobile-menu-button] { display: flex !important; flex-direction: column; justify-content: center; gap: 4px; border: 0; padding: 8px 4px; background: transparent; color: #121212; cursor: pointer; }
+        nav [data-eurus-mobile-menu-button] span { display: block; width: 24px; height: 2px; background: #121212; }
+        nav [data-eurus-mobile-controls] { display: flex; align-items: center; gap: 18px; }
+        nav [data-framer-name="Desktop"] { width: auto !important; }
+      }
+    `;
+    document.body.appendChild(mobileNavStyles);
+    window.setTimeout(() => {
+      if (!mobileNavStyles.isConnected) document.body.appendChild(mobileNavStyles);
+    }, 500);
+    const nav = document.querySelector('nav');
+    const navMenu = nav && nav.querySelector('[data-framer-name="Menu Items"]');
+    if (nav && navMenu && !nav.querySelector('[data-eurus-mobile-menu-button]')) {
+      const controls = document.createElement('div');
+      controls.dataset.eurusMobileControls = 'true';
+      const menuButton = document.createElement('button');
+      menuButton.type = 'button';
+      menuButton.dataset.eurusMobileMenuButton = 'true';
+      menuButton.innerHTML = '<span></span><span></span><span></span>';
+      menuButton.style.display = 'none';
+      menuButton.setAttribute('aria-expanded', 'false');
+      controls.append(menuButton);
+      nav.querySelector('[data-framer-name="Content"]').append(controls);
+      menuButton.addEventListener('click', () => {
+        const open = navMenu.classList.toggle('eurus-mobile-open');
+        menuButton.setAttribute('aria-expanded', String(open));
+      });
+      const desktopApply = nav.querySelector('.framer-1q6wu9x-container a');
+      if (desktopApply && !navMenu.querySelector('[data-eurus-mobile-apply]')) {
+        const mobileApply = desktopApply.cloneNode(true);
+        mobileApply.dataset.eurusMobileApply = 'true';
+        mobileApply.textContent = 'APPLY NOW';
+        mobileApply.style.display = 'none';
+        mobileApply.style.border = '0';
+        mobileApply.style.borderRadius = '0';
+        mobileApply.style.padding = '4px 0';
+        mobileApply.style.background = 'transparent';
+        mobileApply.style.color = '#121212';
+        navMenu.append(mobileApply);
+        const updateMobileApply = () => {
+          const mobile = window.matchMedia('(max-width: 809.98px)').matches;
+          mobileApply.style.display = mobile && navMenu.classList.contains('eurus-mobile-open') ? 'block' : 'none';
+        };
+        menuButton.addEventListener('click', updateMobileApply);
+        window.addEventListener('resize', updateMobileApply);
+        updateMobileApply();
+      }
+    }
+
+    const carouselImages = [
+      'faustina-okeke-04Heap-T7A4-unsplash.jpg',
+      'happy-face-emoji-NaU5noacfH0-unsplash.jpg',
+      'jake-oates-3Q99-tS-Yho-unsplash.jpg'
+    ];
+    document.querySelectorAll('img[src*="vyDT4VwMGQGjhzJBHPu1SveBk.png"], img[src*="NCQeuAtOX0OtSsEQ4x7i9XS2Ug.png"], img[src*="xNpcnrH7H3ID8CWKBCekNnG02wQ.png"]').forEach((carouselImage, index) => {
+      carouselImage.removeAttribute('srcset');
+      carouselImage.src = `./slideShowPics/iMADEaSITE/${carouselImages[index]}`;
+    });
+
+    const heroImages = [
+      'faustina-okeke-04Heap-T7A4-unsplash.jpg',
+      'happy-face-emoji-NaU5noacfH0-unsplash.jpg',
+      'jake-oates-3Q99-tS-Yho-unsplash.jpg',
+      'leiada-krozjhen-rsYdpvrAXrA-unsplash.jpg',
+      'marc-kleen-fJjtt4kHews-unsplash.jpg',
+      'mushvig-niftaliyev-yOE_OmF4-bM-unsplash.jpg',
+      'shane-ryan-herilalaina-2WB7sanku_M-unsplash.jpg',
+      'thisisengineering-ZH_58Z1blrI-unsplash.jpg',
+      'timur-shakerzianov-KihAyij5edU-unsplash.jpg',
+      'tory-hoffman-wm9EUBkYEMQ-unsplash.jpg'
+    ];
+    const heroVideo = document.querySelector('video[src*="lQrr5J1UHz8kuJroagiwJhoRQgM"]');
+    if (heroVideo) {
+      const heroImage = document.createElement('img');
+      let heroImageIndex = 0;
+      heroImage.src = `./slideShowPics/iMADEaSITE/${heroImages[heroImageIndex]}`;
+      heroImage.alt = 'Selected project';
+      heroImage.style.cssText = heroVideo.style.cssText;
+      heroImage.style.opacity = '1';
+      heroImage.style.transition = 'opacity 400ms ease';
+      heroVideo.replaceWith(heroImage);
+      window.setInterval(() => {
+        heroImage.style.opacity = '0';
+        window.setTimeout(() => {
+          heroImageIndex = (heroImageIndex + 1) % heroImages.length;
+          heroImage.src = `./slideShowPics/iMADEaSITE/${heroImages[heroImageIndex]}`;
+          heroImage.style.opacity = '1';
+        }, 400);
+      }, 3000);
+    }
   </script>
     
     <!-- End of bodyEnd -->
