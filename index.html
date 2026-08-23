@@ -2217,14 +2217,14 @@ gw-radio label.gw-radio__input-label u {
       const label = link.textContent.trim().toLowerCase();
       if (label === 'projects') {
         link.textContent = 'Partners';
-        link.href = './404.html';
+        link.href = './zad404.html';
       }
       if (label === 'services' || label === 'testimonials' || label === 'faq') {
-        link.href = './404.html';
+        link.href = './zad404.html';
       }
     });
     const local404Link = document.querySelector('footer [data-framer-name="404 ERROR"] a');
-    if (local404Link) local404Link.href = './404.html';
+    if (local404Link) local404Link.href = './zad404.html';
 
     const footer = document.querySelector('footer');
     if (footer) {
@@ -2254,7 +2254,7 @@ gw-radio label.gw-radio__input-label u {
         if (label === 'instagram') {
           link.href = 'https://www.instagram.com/eurus.world/';
         } else if (['partners', 'services', 'testimonials', 'faq', 'privacy policy', 'terms of service', 'twitter', 'dribbble', 'linkedin'].includes(label)) {
-          link.href = './404.html';
+          link.href = './zad404.html';
         }
       });
       const questionsButton = [...footer.querySelectorAll('button')].find((button) => button.textContent.trim().toLowerCase() === 'subscribe');

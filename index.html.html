@@ -4,7 +4,7 @@
 	
 	
 	
-	<script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://framer.com/edit/init.mjs";document.head.appendChild(n)}}catch(e){}</script>
+	<script>try{if(localStorage.get("__framer_force_showing_editorbar_since")){const n=document.createElement("link");n.rel = "modulepreload";n.href="https://eurus.world";document.head.appendChild(n)}}catch(e){}</script>
 	<!-- Start of headStart -->
   <script>document.addEventListener("DOMContentLoaded",function(){document.title="EURUS | Access Precedes Success";var update=function(){var title=document.querySelector("h1.framer-styles-preset-qx5v1y");if(title&&title.textContent!=="EURUS")title.textContent="EURUS";var subtitle=document.querySelector("h3.framer-styles-preset-bgnhww");if(subtitle&&subtitle.textContent!=="Find your next internship")subtitle.textContent="Find your next internship";var logo=document.querySelector('[data-framer-name="Logo Wrapper"] [data-framer-name="Logo"]');if(logo){logo.setAttribute("aria-label","EURUS | Access Precedes Success");logo.setAttribute("title","EURUS | Access Precedes Success");if(logo.querySelector("svg"))logo.innerHTML='<img src="./e_logo.PNG" alt="EURUS" style="width:100%;height:100%;object-fit:contain;display:block">'}};update();new MutationObserver(update).observe(document.body,{childList:true,subtree:true,characterData:true})})</script>
     
@@ -2217,14 +2217,14 @@ gw-radio label.gw-radio__input-label u {
       const label = link.textContent.trim().toLowerCase();
       if (label === 'projects') {
         link.textContent = 'Partners';
-        link.href = './404.html';
+        link.href = './zad404.html';
       }
       if (label === 'services' || label === 'testimonials' || label === 'faq') {
-        link.href = './404.html';
+        link.href = './zad404.html';
       }
     });
     const local404Link = document.querySelector('footer [data-framer-name="404 ERROR"] a');
-    if (local404Link) local404Link.href = './404.html';
+    if (local404Link) local404Link.href = './zad404.html';
 
     const footer = document.querySelector('footer');
     if (footer) {
@@ -2254,7 +2254,7 @@ gw-radio label.gw-radio__input-label u {
         if (label === 'instagram') {
           link.href = 'https://www.instagram.com/eurus.world/';
         } else if (['partners', 'services', 'testimonials', 'faq', 'privacy policy', 'terms of service', 'twitter', 'dribbble', 'linkedin'].includes(label)) {
-          link.href = './404.html';
+          link.href = './zad404.html';
         }
       });
       const questionsButton = [...footer.querySelectorAll('button')].find((button) => button.textContent.trim().toLowerCase() === 'subscribe');
