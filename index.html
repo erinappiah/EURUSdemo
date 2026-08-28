@@ -2282,6 +2282,51 @@ gw-radio label.gw-radio__input-label u {
       if (buyPromo) buyPromo.style.setProperty('display', 'none', 'important');
     }
 
+    // Pentagram-style thematic carousel + "Show more +" button, inserted below 'Apply Anytime'
+    (function buildPentagramCarousel() {
+      const slides = [
+        { year: '2026', img: 'https://pentagram-production.imgix.net/13c90943-5d0d-49e2-b648-3b98b86010f3/OBAMA_PRESIDENTIAL_CENTER_BIERUT_8.jpg?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=0%2C186%2C3000%2C1284&w=700&h=300&s=fb6c64654bcc95f71d2a2c29a658ada7' },
+        { year: '2025', img: 'https://pentagram-production.imgix.net/4b23498a-79a1-4f67-91d7-e0eb81c54297/ISO_CS_01.png?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=203%2C0%2C3241%2C2160&w=700&h=300&s=4a96781b65b060e5b9b046c40e56cff2' },
+        { year: '2024', img: 'https://pentagram-production.imgix.net/1a013404-2e62-42cd-a60c-ce797f15e936/SM_MOSAICROOMS_CAROUSEL.jpg?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=0%2C0%2C3504%2C1502&w=700&h=300&s=6ea967ef152e9e0b2016add762603d96' },
+        { year: '2023', img: 'https://pentagram-production.imgix.net/72e5797b-1684-4dc0-8ad9-96cd2d102d04/Pfizer_Carouselcopy.jpg?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=0%2C0%2C7000%2C3000&w=700&h=300&s=90ff4734a404f3c2f59acdf43bce9cde' },
+        { year: '2022', img: 'https://pentagram-production.imgix.net/9882e3ec-3315-4cf7-9fd7-5e8f51c90d99/ICD_Carousel.jpg?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=0%2C0%2C5600%2C2400&w=700&h=300&s=a47379b6329ee1fb38030b04d85ee373' },
+        { year: '2021', img: 'https://pentagram-production.imgix.net/d3f30e6c-8679-4cf3-b823-969b57c5cf01/HM_HIUT_carousel.jpg?auto=compress%2Cformat&fit=min&fm=jpg&q=80&rect=1%2C262%2C3913%2C1677&w=700&h=300&s=22f37db987d66892ade271c091071de7' }
+      ];
+      const anchor = temporaryEnd && applyAnytime ? temporaryEnd : null;
+      if (!anchor) return;
+      const section = document.createElement('section');
+      section.className = 'eurus-carousel-section';
+      section.innerHTML = slides.map((s) =>
+        '<div class="eurus-carousel-slide"><span class="eurus-carousel-year">' + s.year + '</span>' +
+        '<img class="eurus-carousel-img" src="' + s.img + '" alt="' + s.year + ' project" loading="lazy" draggable="false"></div>'
+      ).join('');
+      const buttonWrap = document.createElement('div');
+      buttonWrap.className = 'eurus-show-more-wrap';
+      buttonWrap.innerHTML = '<button type="button" class="eurus-show-more-btn">Show more<svg class="eurus-show-more-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M9.25 10.75V15h1.5v-4.25H15v-1.5h-4.25V5h-1.5v4.25H5v1.5z" fill="currentColor"/></svg></button>';
+      const style = document.createElement('style');
+      style.textContent = `
+        .eurus-carousel-section { width: 100%; margin: 32px 0 0; padding: 0 20px; display: flex; flex-direction: row; gap: 24px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+        .eurus-carousel-section::-webkit-scrollbar { display: none; }
+        .eurus-carousel-slide { flex: 0 0 auto; width: min(72vw, 340px); }
+        .eurus-carousel-year { display: block; width: fit-content; background: #121212; color: #6e6e6c; border-radius: 6px; padding: 4px 10px 6px; font-family: "Inter Tight","Inter Tight Placeholder",sans-serif; font-size: 12px; margin-bottom: 10px; }
+        .eurus-carousel-img { display: block; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; background: #f8f7f3; }
+        .eurus-show-more-wrap { width: 100%; margin-top: 40px; display: flex; justify-content: center; }
+        .eurus-show-more-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: rgba(18,18,18,0.08); color: #121212; border: none; border-radius: 999px; font-family: "Inter Tight","Inter Tight Placeholder",sans-serif; font-size: 15px; cursor: pointer; transition: background 0.3s ease; }
+        .eurus-show-more-btn:hover { background: rgba(18,18,18,0.16); }
+        .eurus-show-more-icon { width: 20px; height: 20px; }
+      `;
+      document.head.appendChild(style);
+      anchor.parentElement.insertBefore(section, anchor.nextElementSibling);
+      anchor.parentElement.insertBefore(buttonWrap, section.nextElementSibling);
+      // drag-to-scroll, like Pentagram's carousel
+      let isDown = false, startX = 0, scrollStart = 0;
+      section.addEventListener('pointerdown', (e) => { isDown = true; startX = e.clientX; scrollStart = section.scrollLeft; });
+      window.addEventListener('pointerup', () => { isDown = false; });
+      window.addEventListener('pointermove', (e) => { if (!isDown) return; e.preventDefault(); section.scrollLeft = scrollStart - (e.clientX - startX); });
+      const moreBtn = buttonWrap.querySelector('.eurus-show-more-btn');
+      moreBtn.addEventListener('click', () => { section.scrollBy({ left: section.clientWidth, behavior: 'smooth' }); });
+    })();
+
     const mobileFooterStyles = document.createElement('style');
     mobileFooterStyles.textContent = `
       @media (max-width: 809.98px) {
