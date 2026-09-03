@@ -7977,7 +7977,7 @@
                     style="--extracted-r6o4lv: var(--token-c8ff91d5-4eb8-4f68-a738-88ed3e66598d, rgb(18, 18, 18)); --framer-paragraph-spacing: 0px; transform: none; opacity: 1;">
                     <p class="framer-text framer-styles-preset-i1tny6" data-styles-preset="Rq2ZsPJ3a"
                       style="--framer-text-color:var(--extracted-r6o4lv, var(--token-c8ff91d5-4eb8-4f68-a738-88ed3e66598d, rgb(18, 18, 18)))">
-                      Contact Us</p>
+                      APPLY NOW</p>
                   </div>
                   <div class="framer-1phwdlp" data-framer-name="Icon Wrapper" style="opacity: 1;">
                     <div class="framer-1rm9tpc" data-framer-name="Arrow Right Icon 01" style="opacity:0">
@@ -10620,8 +10620,8 @@
     }
     const navLabels = [
       ['ABOUT', './zad404.html'],
-      ['FOR PARTNERS', './zad404.html'],
       ['FAQ', './zad404.html'],
+      ['FOR PARTNERS', './zad404.html'],
       ['APPLY NOW', 'https://tally.so/r/KY2dkD']
     ];
     const navMenuLinks = document.querySelectorAll('nav [data-framer-name="Menu Items"] a');
@@ -10632,6 +10632,12 @@
         link.href = item[1];
       }
     });
+    const desktopApplyLink = document.querySelector('nav .framer-1q6wu9x-container > a');
+    if (desktopApplyLink) {
+      desktopApplyLink.href = 'https://tally.so/r/KY2dkD';
+      const desktopApplyLabel = desktopApplyLink.querySelector('p');
+      if (desktopApplyLabel) desktopApplyLabel.textContent = 'APPLY NOW';
+    }
     const carouselMeta = document.querySelector('#hero-section .framer-4gt053');
     if (carouselMeta && !carouselMeta.querySelector('[data-eurus-hero-apply]')) {
       document.querySelectorAll('#hero-section .framer-1vxid6y-container').forEach((container) => container.remove());
@@ -10729,6 +10735,8 @@
 
     const scrollStateStyles = document.createElement('style');
     scrollStateStyles.textContent = `
+      nav .framer-1q6wu9x-container > a { display:inline-flex !important; align-items:center; gap:6px; padding:0 !important; border:0 !important; border-radius:0 !important; color:#121212 !important; font:400 18px/1.2 "Inter Tight", sans-serif !important; text-decoration:none !important; }
+      nav .framer-1q6wu9x-container > a [data-framer-name="Icon Wrapper"] { display:none !important; }
       nav [data-framer-name="Logo Wrapper"] { transition: opacity 220ms ease, visibility 220ms ease; }
       body.eurus-scrolled nav [data-framer-name="Logo Wrapper"] { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
       [data-eurus-zob1] .eurus-zob1-copy { transition: color 500ms ease; }
