@@ -8071,7 +8071,7 @@
                           style="--extracted-r6o4lv: var(--token-c8ff91d5-4eb8-4f68-a738-88ed3e66598d, rgb(18, 18, 18)); --framer-paragraph-spacing: 0px; transform: none; opacity: 1;">
                           <p class="framer-text framer-styles-preset-i1tny6" data-styles-preset="Rq2ZsPJ3a"
                             style="--framer-text-color:var(--extracted-r6o4lv, var(--token-c8ff91d5-4eb8-4f68-a738-88ed3e66598d, rgb(18, 18, 18)))">
-                            Let's Collab</p>
+                            APPLY NOW</p>
                         </div>
                         <div class="framer-xgtfx5" data-framer-name="Line"
                           style="background-color: var(--token-c8ff91d5-4eb8-4f68-a738-88ed3e66598d, rgb(18, 18, 18)); opacity: 1;">
@@ -8130,6 +8130,36 @@
                   </div>
                 </div>
               </div>
+              <section data-eurus-zob1="true" aria-label="Every Interest Has A Place"
+                style="width:min(100%, 760px);margin:32px auto 0;position:relative;z-index:1;font-family:Inter Tight, sans-serif;color:#121212;">
+                <style>
+                  #hero-section .framer-oz83ym { padding-bottom:0 !important; }
+                  #hero-section .framer-1lxjjeg { padding-bottom:0 !important; }
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] { display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; }
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container { flex:none; order:-1; }
+                  [data-eurus-zob1] .eurus-zob1-heading { display:flex; align-items:flex-end; gap:20px; line-height:.94; }
+                  [data-eurus-zob1] .eurus-zob1-title { display:flex; flex-direction:column; font-size:48px; font-weight:700; letter-spacing:0; }
+                  [data-eurus-zob1] .eurus-zob1-title span:first-child { color:#6e6e6c; font-weight:600; }
+                  [data-eurus-zob1] .eurus-zob1-heading a { flex:none; margin-bottom:6px; color:#121212; font-size:16px; line-height:1; text-decoration:none; white-space:nowrap; }
+                  [data-eurus-zob1] .eurus-zob1-copy { max-width:700px; margin:28px 0 40px; color:#d2d2ce; font-size:22px; font-weight:500; line-height:1.18; }
+                  [data-eurus-zob1] .eurus-zob1-link { display:inline-flex; align-items:center; gap:6px; color:#121212; font-size:12px; line-height:1; text-decoration:none; border-bottom:1px solid #121212; padding-bottom:4px; }
+                  [data-eurus-zob1] .eurus-zob1-link span { font-size:18px; line-height:8px; }
+                  @media (max-width:809.98px) {
+                    [data-eurus-zob1] { width:100% !important; margin-top:-28px !important; }
+                    [data-eurus-zob1] .eurus-zob1-title { font-size:36px; }
+                    [data-eurus-zob1] .eurus-zob1-heading { gap:12px; }
+                    [data-eurus-zob1] .eurus-zob1-heading a { font-size:13px; }
+                    [data-eurus-zob1] .eurus-zob1-copy { margin:24px 0 32px; font-size:18px; line-height:1.2; }
+                    #hero-section .framer-oz83ym { gap:0 !important; padding-top:0 !important; }
+                    #hero-section .framer-4gt053[data-eurus-carousel-meta] { gap:12px; }
+                  }
+                </style>
+                <div class="eurus-zob1-heading">
+                  <div class="eurus-zob1-title"><span>Every Interest</span><span>Has A Place</span></div>
+                </div>
+                <p class="eurus-zob1-copy">We create customized internship experiences for high school students. Matching every accepted student with a U.S.-based company partner. While covering housing, transportation, and more.</p>
+                <a class="eurus-zob1-link" href="#">Take a Look <span aria-hidden="true">&rarr;</span></a>
+              </section>
             </div>
           </section>
           <section class="framer-6vzt42" data-framer-name="About Section">
@@ -10578,6 +10608,13 @@
         link.href = item[1];
       }
     });
+    const heroApply = [...document.querySelectorAll('#hero-section .framer-1vxid6y-container')]
+      .find((container) => container.offsetParent !== null);
+    const carouselMeta = document.querySelector('#hero-section .framer-4gt053');
+    if (heroApply && carouselMeta && !carouselMeta.contains(heroApply)) {
+      carouselMeta.prepend(heroApply);
+      carouselMeta.dataset.eurusCarouselMeta = 'true';
+    }
     const local404Link = document.querySelector('footer [data-framer-name="404 ERROR"] a');
     if (local404Link) local404Link.href = './zad404.html';
 
