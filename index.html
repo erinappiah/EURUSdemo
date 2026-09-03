@@ -8135,10 +8135,12 @@
                 <style>
                   #hero-section .framer-oz83ym { padding-bottom:0 !important; }
                   #hero-section .framer-1lxjjeg { padding-bottom:0 !important; }
+                  #hero-section .framer-1agonid { margin-top:40px !important; }
                   #hero-section .framer-4gt053[data-eurus-carousel-meta] { display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; }
-                  #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container { flex:none; order:-1; }
-                  #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container,
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] [data-eurus-hero-apply] { flex:none; order:-1; }
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] [data-eurus-hero-apply],
                   #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-i3urwj { flex:0 1 auto; }
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] [data-eurus-hero-apply] { color:#121212; font:400 18px/1.2 "Inter Tight", sans-serif; text-decoration:none; white-space:nowrap; }
                   [data-eurus-zob1] .eurus-zob1-heading { display:flex; align-items:flex-end; gap:20px; line-height:.94; }
                   [data-eurus-zob1] .eurus-zob1-title { display:flex; flex-direction:column; font-size:48px; font-weight:700; letter-spacing:0; }
                   [data-eurus-zob1] .eurus-zob1-title span:first-child { color:#6e6e6c; font-weight:600; }
@@ -8153,8 +8155,9 @@
                     [data-eurus-zob1] .eurus-zob1-heading a { font-size:13px; }
                     [data-eurus-zob1] .eurus-zob1-copy { margin:24px 0 32px; font-size:18px; line-height:1.2; }
                     #hero-section .framer-oz83ym { gap:0 !important; padding-top:0 !important; }
+                    #hero-section .framer-1agonid { margin-top:24px !important; }
                     #hero-section .framer-4gt053[data-eurus-carousel-meta] { gap:12px; align-items:center; }
-                    #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container { min-width:0; transform:scale(.86); transform-origin:left center; }
+                    #hero-section .framer-4gt053[data-eurus-carousel-meta] [data-eurus-hero-apply] { min-width:0; transform:scale(.86); transform-origin:left center; }
                     #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-i3urwj { min-width:0; transform:scale(.86); transform-origin:right center; }
                   }
                   @media (min-width:810px) {
@@ -10572,7 +10575,15 @@
       new MutationObserver(normalizePublicUrls).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
     })();
     (() => {
-      const updateScrollState = () => document.body.classList.toggle('eurus-scrolled', window.scrollY > 24);
+      const updateScrollState = () => {
+        const scrolled = window.scrollY > 24;
+        document.body.classList.toggle('eurus-scrolled', scrolled);
+        document.querySelectorAll('nav [data-framer-name="Logo Wrapper"]').forEach((logo) => {
+          logo.style.opacity = scrolled ? '0' : '';
+          logo.style.visibility = scrolled ? 'hidden' : '';
+          logo.style.pointerEvents = scrolled ? 'none' : '';
+        });
+      };
       window.addEventListener('scroll', updateScrollState, { passive: true });
       updateScrollState();
     })();
@@ -10611,7 +10622,7 @@
       ['ABOUT', './zad404.html'],
       ['FOR PARTNERS', './zad404.html'],
       ['FAQ', './zad404.html'],
-      ['CONTACT', 'https://tally.so/r/KY2dkD']
+      ['APPLY NOW', 'https://tally.so/r/KY2dkD']
     ];
     const navMenuLinks = document.querySelectorAll('nav [data-framer-name="Menu Items"] a');
     navMenuLinks.forEach((link, index) => {
@@ -10621,10 +10632,13 @@
         link.href = item[1];
       }
     });
-    const heroApply = [...document.querySelectorAll('#hero-section .framer-1vxid6y-container')]
-      .find((container) => container.offsetParent !== null);
     const carouselMeta = document.querySelector('#hero-section .framer-4gt053');
-    if (heroApply && carouselMeta && !carouselMeta.contains(heroApply)) {
+    if (carouselMeta && !carouselMeta.querySelector('[data-eurus-hero-apply]')) {
+      document.querySelectorAll('#hero-section .framer-1vxid6y-container').forEach((container) => container.remove());
+      const heroApply = document.createElement('a');
+      heroApply.dataset.eurusHeroApply = 'true';
+      heroApply.href = 'https://tally.so/r/KY2dkD';
+      heroApply.textContent = 'APPLY NOW';
       carouselMeta.prepend(heroApply);
       carouselMeta.dataset.eurusCarouselMeta = 'true';
     }
@@ -10717,7 +10731,9 @@
     scrollStateStyles.textContent = `
       nav [data-framer-name="Logo Wrapper"] { transition: opacity 220ms ease, visibility 220ms ease; }
       body.eurus-scrolled nav [data-framer-name="Logo Wrapper"] { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
-      body.eurus-scrolled [data-eurus-zob1] .eurus-zob1-copy { color: #121212 !important; }
+      [data-eurus-zob1] .eurus-zob1-copy { transition: color 500ms ease; }
+      body.eurus-scrolled [data-eurus-zob1] .eurus-zob1-copy { animation: eurus-copy-darken 500ms ease forwards; }
+      @keyframes eurus-copy-darken { from { color:#d2d2ce; } to { color:#121212; } }
     `;
     document.head.appendChild(scrollStateStyles);
 
@@ -10790,26 +10806,6 @@
         const open = navMenu.classList.toggle('eurus-mobile-open');
         menuButton.setAttribute('aria-expanded', String(open));
       });
-      const desktopApply = nav.querySelector('.framer-1q6wu9x-container a');
-      if (desktopApply && !navMenu.querySelector('[data-eurus-mobile-apply]')) {
-        const mobileApply = desktopApply.cloneNode(true);
-        mobileApply.dataset.eurusMobileApply = 'true';
-        mobileApply.textContent = 'APPLY NOW';
-        mobileApply.style.display = 'none';
-        mobileApply.style.border = '0';
-        mobileApply.style.borderRadius = '0';
-        mobileApply.style.padding = '4px 0';
-        mobileApply.style.background = 'transparent';
-        mobileApply.style.color = '#121212';
-        navMenu.append(mobileApply);
-        const updateMobileApply = () => {
-          const mobile = window.matchMedia('(max-width: 809.98px)').matches;
-          mobileApply.style.display = mobile && navMenu.classList.contains('eurus-mobile-open') ? 'block' : 'none';
-        };
-        menuButton.addEventListener('click', updateMobileApply);
-        window.addEventListener('resize', updateMobileApply);
-        updateMobileApply();
-      }
     }
 
     const carouselImages = [
