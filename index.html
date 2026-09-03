@@ -8137,6 +8137,8 @@
                   #hero-section .framer-1lxjjeg { padding-bottom:0 !important; }
                   #hero-section .framer-4gt053[data-eurus-carousel-meta] { display:flex; align-items:center; justify-content:space-between; gap:20px; width:100%; }
                   #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container { flex:none; order:-1; }
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container,
+                  #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-i3urwj { flex:0 1 auto; }
                   [data-eurus-zob1] .eurus-zob1-heading { display:flex; align-items:flex-end; gap:20px; line-height:.94; }
                   [data-eurus-zob1] .eurus-zob1-title { display:flex; flex-direction:column; font-size:48px; font-weight:700; letter-spacing:0; }
                   [data-eurus-zob1] .eurus-zob1-title span:first-child { color:#6e6e6c; font-weight:600; }
@@ -8151,7 +8153,13 @@
                     [data-eurus-zob1] .eurus-zob1-heading a { font-size:13px; }
                     [data-eurus-zob1] .eurus-zob1-copy { margin:24px 0 32px; font-size:18px; line-height:1.2; }
                     #hero-section .framer-oz83ym { gap:0 !important; padding-top:0 !important; }
-                    #hero-section .framer-4gt053[data-eurus-carousel-meta] { gap:12px; }
+                    #hero-section .framer-4gt053[data-eurus-carousel-meta] { gap:12px; align-items:center; }
+                    #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-1vxid6y-container { min-width:0; transform:scale(.86); transform-origin:left center; }
+                    #hero-section .framer-4gt053[data-eurus-carousel-meta] .framer-i3urwj { min-width:0; transform:scale(.86); transform-origin:right center; }
+                  }
+                  @media (min-width:810px) {
+                    [data-eurus-zob1] { margin-left:0 !important; margin-right:auto !important; }
+                    [data-eurus-zob1] .eurus-zob1-copy { max-width:760px; }
                   }
                 </style>
                 <div class="eurus-zob1-heading">
@@ -10563,6 +10571,11 @@
       normalizePublicUrls();
       new MutationObserver(normalizePublicUrls).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
     })();
+    (() => {
+      const updateScrollState = () => document.body.classList.toggle('eurus-scrolled', window.scrollY > 24);
+      window.addEventListener('scroll', updateScrollState, { passive: true });
+      updateScrollState();
+    })();
       document.querySelectorAll('a[href="https://creovo.framer.website/contact"]').forEach((collabLink) => {
       collabLink.href = 'https://tally.so/r/KY2dkD';
       const collabLabel = collabLink.querySelector('p');
@@ -10699,6 +10712,14 @@
       }
     `;
     document.head.appendChild(mobileFooterStyles);
+
+    const scrollStateStyles = document.createElement('style');
+    scrollStateStyles.textContent = `
+      nav [data-framer-name="Logo Wrapper"] { transition: opacity 220ms ease, visibility 220ms ease; }
+      body.eurus-scrolled nav [data-framer-name="Logo Wrapper"] { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+      body.eurus-scrolled [data-eurus-zob1] .eurus-zob1-copy { color: #121212 !important; }
+    `;
+    document.head.appendChild(scrollStateStyles);
 
     const mobileNavStyles = document.createElement('style');
     mobileNavStyles.textContent = `
