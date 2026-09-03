@@ -8148,12 +8148,38 @@
                   [data-eurus-zob1] .eurus-zob1-copy { max-width:700px; margin:28px 0 40px; color:#d2d2ce; font-size:22px; font-weight:500; line-height:1.18; }
                   [data-eurus-zob1] .eurus-zob1-link { display:inline-flex; align-items:center; gap:6px; color:#121212; font-size:12px; line-height:1; text-decoration:none; border-bottom:1px solid #121212; padding-bottom:4px; }
                   [data-eurus-zob1] .eurus-zob1-link span { font-size:18px; line-height:8px; }
+                  [data-eurus-image-carousel] { width:100vw; height:278px !important; min-height:278px !important; flex:none !important; margin:16px 0 0; overflow:hidden; position:relative; left:50%; transform:translateX(-50%); background:#f8f7f3; padding:0 0 28px; }
+                  [data-eurus-image-track] { display:flex; width:max-content; animation:eurus-image-scroll 70s linear infinite; will-change:transform; }
+                  [data-eurus-image-track]:hover { animation-play-state:paused; }
+                  [data-eurus-image-card] { flex:none; width:342px; margin-right:14px; }
+                  [data-eurus-image-card] img { display:block; width:100%; height:250px; object-fit:cover; }
+                  [data-eurus-image-more] { display:block; width:max-content; margin:28px auto 0; padding:10px 16px; border:0; border-radius:4px; color:#fff; background:#3a3a3a; font:600 16px/1 "Inter Tight",sans-serif; text-decoration:none; }
+                  [data-eurus-process] { width:min(100%, 820px); margin:24px auto 0; color:#121212; font-family:"Inter Tight",sans-serif; position:relative; text-align:center; }
+                  [data-eurus-process] .eurus-process-step { display:block; padding:28px 0; position:relative; }
+                  [data-eurus-process] .eurus-process-step:not(:last-child)::after { content:""; position:absolute; top:calc(100% - 28px); left:50%; width:1px; height:56px; background:#183b59; opacity:.35; transform:translateX(-50%); }
+                  [data-eurus-process] .eurus-process-icon { display:none; }
+                  [data-eurus-process] .eurus-process-copy h3 { margin:0 0 12px; color:#121212; font-size:48px; font-weight:700; line-height:.94; letter-spacing:0; }
+                  [data-eurus-process] .eurus-process-copy p { max-width:760px; margin:0 auto; color:#121212; font-size:22px; font-weight:500; line-height:1.18; }
+                  [data-eurus-process] .eurus-process-copy { opacity:0; transform:translateY(22px); transition:opacity 600ms ease, transform 600ms ease; }
+                  [data-eurus-process] .eurus-process-step.is-visible .eurus-process-copy { opacity:1; transform:none; }
+                  @media (prefers-reduced-motion:reduce) {
+                    [data-eurus-process] .eurus-process-copy { opacity:1; transform:none; transition:none; }
+                  }
+                  @keyframes eurus-image-scroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
                   @media (max-width:809.98px) {
                     [data-eurus-zob1] { width:100% !important; margin-top:-28px !important; }
                     [data-eurus-zob1] .eurus-zob1-title { font-size:36px; }
                     [data-eurus-zob1] .eurus-zob1-heading { gap:12px; }
                     [data-eurus-zob1] .eurus-zob1-heading a { font-size:13px; }
                     [data-eurus-zob1] .eurus-zob1-copy { margin:24px 0 32px; font-size:18px; line-height:1.2; }
+                    [data-eurus-image-carousel] { height:214px !important; min-height:214px !important; margin-top:10px; padding-bottom:24px; }
+                    [data-eurus-image-card] { width:260px; margin-right:10px; }
+                    [data-eurus-image-card] img { height:190px; }
+                    [data-eurus-image-more] { margin-top:24px; font-size:15px; }
+                    [data-eurus-process] { margin-top:16px; }
+                    [data-eurus-process] .eurus-process-step { padding:22px 0; }
+                    [data-eurus-process] .eurus-process-copy h3 { font-size:36px; }
+                    [data-eurus-process] .eurus-process-copy p { max-width:100%; font-size:18px; line-height:1.2; }
                     #hero-section .framer-oz83ym { gap:0 !important; padding-top:0 !important; }
                     #hero-section .framer-1agonid { margin-top:24px !important; }
                     #hero-section .framer-4gt053[data-eurus-carousel-meta] { gap:12px; align-items:center; }
@@ -8170,6 +8196,24 @@
                 </div>
                 <p class="eurus-zob1-copy">We create customized internship experiences for high school students. Matching every accepted student with a U.S.-based company partner. While covering housing, transportation, and more.</p>
                 <a class="eurus-zob1-link" href="#">Take a Look <span aria-hidden="true">&rarr;</span></a>
+              </section>
+              <section data-eurus-image-carousel="true" aria-label="Internship image carousel">
+                <div data-eurus-image-track></div>
+                <a data-eurus-image-more href="#">SHOW MORE <span aria-hidden="true">+</span></a>
+              </section>
+              <section data-eurus-process aria-label="Internship process">
+                <article class="eurus-process-step">
+                  <div class="eurus-process-icon" aria-hidden="true"></div>
+                  <div class="eurus-process-copy"><h3>APPLY</h3><p>Submit your application with your interests, goals, and availability.</p></div>
+                </article>
+                <article class="eurus-process-step">
+                  <div class="eurus-process-icon eurus-process-icon--chat" aria-hidden="true"></div>
+                  <div class="eurus-process-copy"><h3>INTERVIEW</h3><p>If you are matched, we schedule a 40-minute interview to walk you through the company, expectations, and onboarding materials. If not, you stay on our waitlist until the right opportunity opens.</p></div>
+                </article>
+                <article class="eurus-process-step">
+                  <div class="eurus-process-icon eurus-process-icon--rocket" aria-hidden="true"></div>
+                  <div class="eurus-process-copy"><h3>EXPERIENCE</h3><p>Your internship includes career development workshops, career excursions, and access to exclusive industry events designed to expand your professional network as a high school student.</p></div>
+                </article>
               </section>
             </div>
           </section>
@@ -10761,6 +10805,7 @@
         nav [data-framer-name="Menu Items"] > div { width: 100% !important; height: 39.2px !important; min-height: 0 !important; flex: none !important; overflow: hidden !important; }
         nav [data-framer-name="Menu Items"] > div p { height: 39.2px !important; min-height: 0 !important; margin: 0 !important; }
         nav [data-framer-name="Menu Items"] a { display: block !important; position: relative !important; top: 0 !important; transform: none !important; padding: 6px 0 !important; white-space: nowrap !important; }
+        nav [data-framer-name="Menu Items"] > a { width:100% !important; color:#121212 !important; font:400 16px/27.2px "Inter Tight",sans-serif !important; text-decoration:none !important; }
         nav [data-framer-name="Menu Items"] [data-eurus-mobile-apply] { display: none !important; }
         nav [data-framer-name="Menu Items"] [data-eurus-mobile-apply]::after { display: none !important; content: none !important; }
         nav [data-eurus-mobile-menu-button] { display: flex !important; flex-direction: column; justify-content: center; gap: 4px; border: 0; padding: 8px 4px; background: transparent; color: #121212; cursor: pointer; }
@@ -10799,6 +10844,32 @@
       new MutationObserver(enforce).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] });
     })();
     const navMenu = nav && nav.querySelector('[data-framer-name="Menu Items"]');
+    const ensureMobileMenuItems = () => {
+      if (!navMenu) return;
+      const menuLabels = [
+        ['ABOUT', './zad404.html'],
+        ['FAQ', './zad404.html'],
+        ['FOR PARTNERS', './zad404.html'],
+        ['APPLY NOW', 'https://tally.so/r/KY2dkD']
+      ];
+      const links = [...navMenu.querySelectorAll('a')];
+      if (links.length >= menuLabels.length && links.some((link) => link.textContent.trim())) {
+        links.slice(0, menuLabels.length).forEach((link, index) => {
+          link.textContent = menuLabels[index][0];
+          link.href = menuLabels[index][1];
+        });
+        links.slice(menuLabels.length).forEach((link) => link.remove());
+        return;
+      }
+      navMenu.replaceChildren(...menuLabels.map(([label, href]) => {
+        const link = document.createElement('a');
+        link.textContent = label;
+        link.href = href;
+        return link;
+      }));
+    };
+    ensureMobileMenuItems();
+    window.setTimeout(ensureMobileMenuItems, 500);
     if (nav && navMenu && !nav.querySelector('[data-eurus-mobile-menu-button]')) {
       const controls = document.createElement('div');
       controls.dataset.eurusMobileControls = 'true';
@@ -10825,6 +10896,53 @@
       carouselImage.removeAttribute('srcset');
       carouselImage.src = `./slideShowPics/iMADEaSITE/${carouselImages[index]}`;
     });
+
+    const internshipCarouselImages = [
+      'faustina-okeke-04Heap-T7A4-unsplash.jpg',
+      'happy-face-emoji-NaU5noacfH0-unsplash.jpg',
+      'jake-oates-3Q99-tS-Yho-unsplash.jpg',
+      'leiada-krozjhen-rsYdpvrAXrA-unsplash.jpg',
+      'marc-kleen-fJjtt4kHews-unsplash.jpg',
+      'mushvig-niftaliyev-yOE_OmF4-bM-unsplash.jpg',
+      'shane-ryan-herilalaina-2WB7sanku_M-unsplash.jpg',
+      'thisisengineering-ZH_58Z1blrI-unsplash.jpg',
+      'timur-shakerzianov-KihAyij5edU-unsplash.jpg',
+      'tory-hoffman-wm9EUBkYEMQ-unsplash.jpg'
+    ];
+    const internshipTrack = document.querySelector('[data-eurus-image-track]');
+    const internshipCarousel = document.querySelector('[data-eurus-image-carousel]');
+    if (internshipCarousel) {
+      const mobileCarousel = window.matchMedia('(max-width: 809.98px)').matches;
+      const carouselHeight = mobileCarousel ? '214px' : '278px';
+      internshipCarousel.style.setProperty('height', carouselHeight, 'important');
+      internshipCarousel.style.setProperty('min-height', carouselHeight, 'important');
+      internshipCarousel.style.setProperty('flex', 'none', 'important');
+    }
+    if (internshipTrack) {
+      [...internshipCarouselImages, ...internshipCarouselImages].forEach((imageName, index) => {
+        const card = document.createElement('div');
+        card.dataset.eurusImageCard = String(index + 1);
+        const image = document.createElement('img');
+        image.src = `./slideShowPics/iMADEaSITE/${imageName}`;
+        image.alt = 'EURUS internship experience';
+        image.loading = index < 3 ? 'eager' : 'lazy';
+        card.append(image);
+        internshipTrack.append(card);
+      });
+    }
+    const processSteps = document.querySelectorAll('[data-eurus-process] .eurus-process-step');
+    if ('IntersectionObserver' in window) {
+      const processObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+      processSteps.forEach((step) => processObserver.observe(step));
+    } else {
+      processSteps.forEach((step) => step.classList.add('is-visible'));
+    }
 
     const heroImages = [
       'faustina-okeke-04Heap-T7A4-unsplash.jpg',
