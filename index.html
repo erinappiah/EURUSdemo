@@ -20,7 +20,7 @@
 
   <script>try { if (localStorage.get("__framer_force_showing_editorbar_since")) { const n = document.createElement("link"); n.rel = "modulepreload"; n.href = "https://framer.com/edit/init.mjs"; document.head.appendChild(n) } } catch (e) { }</script>
   <!-- Start of headStart -->
-  <script>document.addEventListener("DOMContentLoaded", function () { document.title = "EURUS | Access Precedes Success"; var update = function () { var title = document.querySelector("h1.framer-styles-preset-qx5v1y"); if (title && title.textContent !== "EURUS") title.textContent = "EURUS"; var subtitle = document.querySelector("h3.framer-styles-preset-bgnhww"); if (subtitle && subtitle.textContent !== "Find your next internship") subtitle.textContent = "Find your next internship"; var logo = document.querySelector('[data-framer-name="Logo Wrapper"] [data-framer-name="Logo"]'); if (logo) { logo.setAttribute("aria-label", "EURUS | Access Precedes Success"); logo.setAttribute("title", "EURUS | Access Precedes Success"); if (logo.querySelector("svg")) logo.innerHTML = '<img src="./e_logo.PNG" alt="EURUS" style="width:100%;height:100%;object-fit:contain;display:block">' } }; update(); new MutationObserver(update).observe(document.body, { childList: true, subtree: true, characterData: true }) })</script>
+  <script>document.addEventListener("DOMContentLoaded", function () { document.title = "EURUS | Access Precedes Success"; var update = function () { var title = document.querySelector("h1.framer-styles-preset-qx5v1y"); if (title && title.textContent !== "EURUS") title.textContent = "EURUS"; var heroTag = document.querySelector('[data-framer-name="Title and Tag"] p.framer-styles-preset-1ex6rr3'); if (heroTag) heroTag.parentElement.style.display = "none"; var subtitle = document.querySelector("h3.framer-styles-preset-bgnhww"); if (subtitle && subtitle.textContent !== "Find your next internship") subtitle.textContent = "Find your next internship"; var logo = document.querySelector('[data-framer-name="Logo Wrapper"] [data-framer-name="Logo"]'); if (logo) { logo.setAttribute("aria-label", "EURUS | Access Precedes Success"); logo.setAttribute("title", "EURUS | Access Precedes Success"); if (logo.querySelector("svg")) logo.innerHTML = '<img src="./e_logo.PNG" alt="EURUS" style="width:100%;height:100%;object-fit:contain;display:block">' } }; update(); new MutationObserver(update).observe(document.body, { childList: true, subtree: true, characterData: true }) })</script>
 
   <!-- End of headStart -->
   <meta name="viewport" content="width=device-width">
@@ -10560,8 +10560,10 @@
     const local404Link = document.querySelector('footer [data-framer-name="404 ERROR"] a');
     if (local404Link) local404Link.href = './zad404.html';
 
+    const applyFooterOverrides = () => {
     const footer = document.querySelector('footer');
-    if (footer) {
+    if (!footer) return;
+    if (window.__footerObserver) window.__footerObserver.disconnect();
       footer.style.marginTop = '64px';
       const footerLogo = footer.querySelector('img[src*="1tQX6kGfuHrFFnRsory4jcxibM.png"]');
       if (footerLogo) {
@@ -10576,7 +10578,8 @@
         ['Â© 2025 creova. All Rights Reserved.', 'EURUS 2026. ALL RIGHTS RESERVED']
       ];
       footer.querySelectorAll('p').forEach((text) => {
-        const replacement = footerTexts.find(([original]) => text.textContent.trim() === original);
+        const normalized = text.textContent.replace(/\s+/g, ' ').trim();
+        const replacement = footerTexts.find(([original]) => normalized === original);
         if (replacement) text.textContent = replacement[1];
       });
       const footerCredit = [...footer.querySelectorAll('p')].find((text) => text.textContent.trim().startsWith('Made with love by'));
@@ -10597,7 +10600,10 @@
         questionsButton.type = 'button';
         questionsButton.addEventListener('click', () => { window.location.href = 'mailto:info@eurus.world'; });
       }
-    }
+    };
+    window.__footerObserver = new MutationObserver(applyFooterOverrides);
+    applyFooterOverrides();
+    window.__footerObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
 
     // Temporary endpoint: remove this block to restore the sections below the hero.
     const temporaryEnd = document.querySelector('#hero-section');
