@@ -10903,16 +10903,27 @@
     });
 
     const internshipCarouselImages = [
-      'faustina-okeke-04Heap-T7A4-unsplash.jpg',
-      'happy-face-emoji-NaU5noacfH0-unsplash.jpg',
-      'jake-oates-3Q99-tS-Yho-unsplash.jpg',
-      'leiada-krozjhen-rsYdpvrAXrA-unsplash.jpg',
-      'marc-kleen-fJjtt4kHews-unsplash.jpg',
-      'mushvig-niftaliyev-yOE_OmF4-bM-unsplash.jpg',
-      'shane-ryan-herilalaina-2WB7sanku_M-unsplash.jpg',
-      'thisisengineering-ZH_58Z1blrI-unsplash.jpg',
-      'timur-shakerzianov-KihAyij5edU-unsplash.jpg',
-      'tory-hoffman-wm9EUBkYEMQ-unsplash.jpg'
+      'aiTechstudents.jpg',
+      'art student.jpg',
+      'avaition student.jpg',
+      'consulting student.jpg',
+      'criminal justice student.jpg',
+      'culinary student.jpg',
+      'cybersecuirt students.jpg',
+      'engineering students.jpg',
+      'fashion student.jpg',
+      'fashion2 student.jpg',
+      'finance student.jpg',
+      'journalism student.jpg',
+      'marketing Student.jpg',
+      'muisc student.jpg',
+      'nonprofitSocialImpactstudent.jpg',
+      'sports media student.jpg',
+      'sports student.jpg',
+      'startup intern.jpg',
+      'student.jpg',
+      'tech student.jpg',
+      'vc student.jpg'
     ];
     const internshipTrack = document.querySelector('[data-eurus-image-track]');
     const internshipCarousel = document.querySelector('[data-eurus-image-carousel]');
@@ -10928,7 +10939,7 @@
         const card = document.createElement('div');
         card.dataset.eurusImageCard = String(index + 1);
         const image = document.createElement('img');
-        image.src = `./slideShowPics/iMADEaSITE/${imageName}`;
+        image.src = `./TracksPhotos/${imageName}`;
         image.alt = 'EURUS internship experience';
         image.loading = index < 3 ? 'eager' : 'lazy';
         card.append(image);
